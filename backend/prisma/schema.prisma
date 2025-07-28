@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  documents Document[]
+}
+
+model Document {
+  id         String        @id @default(cuid())
+  fileName   String   
+  status     String        @default("PROCESSING")
+  createdAt  DateTime      @default(now())
+  user       User          @relation(fields: [userId], references: [id])
+  userId     String
+  messages   ChatMessage[]
+  fileUrl   String        @default("")
+}
+
+model ChatMessage {
+  id         String   @id @default(cuid())
+  role       String // "user" or "ai"
+  content    String
+  createdAt  DateTime @default(now())
+  document   Document @relation(fields: [documentId], references: [id])
+  documentId String
+}
