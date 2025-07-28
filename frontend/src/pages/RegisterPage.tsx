@@ -14,9 +14,7 @@ const RegisterPage: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(''); // Clear previous errors
-
-    // --- Frontend validation ---
+    setError('');
     if (password !== confirmPassword) {
       setError('Passwords do not match.');
       return;
@@ -27,15 +25,11 @@ const RegisterPage: React.FC = () => {
     }
 
     try {
-      // --- API call to the backend ---
       await apiClient.post('/auth/register', { email, password });
-
-      // --- On success, redirect to login ---
-      alert('Registration successful! Please log in.'); // Optional: give user feedback
-      navigate('/login');
+      navigate('/');
     } catch (err: any) {
       if (err.response && err.response.data && err.response.data.error) {
-        setError(err.response.data.error); // Show backend error (e.g., "User already exists")
+        setError(err.response.data.error);
       } else {
         setError('Registration failed. Please try again.');
       }
