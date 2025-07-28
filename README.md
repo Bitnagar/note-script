@@ -22,7 +22,6 @@ Note Script is a Retrieval-Augmented Generation (RAG) web application that lever
     - [PDF Viewer (`src/components/pdf-viewer.tsx`, `PdfViewer.tsx`)](#pdf-viewer-srccomponentspdf-viewertsx-pdfviewertsx)
   - [Data Flow](#data-flow)
   - [Setup \& Development](#setup--development)
-  - [Extending the System](#extending-the-system)
 
 ---
 
@@ -38,8 +37,6 @@ Note Script is a Retrieval-Augmented Generation (RAG) web application that lever
 ---
 
 ## Architecture Overview
-
-![Architecture Diagram](./architecture-diagram.png)
 
 - **Client:** React/TypeScript app
 - **Server:** Node.js/Express API
@@ -153,12 +150,3 @@ Note Script is a Retrieval-Augmented Generation (RAG) web application that lever
 7. **Start backend:** `npm run dev` in `/backend`
 8. **Start frontend:** `npm run dev` in `/frontend`
 9. **Access the app at** `http://localhost:5173`
-
----
-
-## Extending the System
-
-- **Add support for more file types:** Extend backend and frontend to handle other document formats.
-- **Improve chunking/embedding:** Tune chunk size or embedding model for better retrieval.
-- **Enhance UI:** Add features like document search, annotation, or multi-document chat.
-- **Integrate more AI models:** Swap or combine Gemini with other LLMs.
