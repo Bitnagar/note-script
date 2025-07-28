@@ -13,7 +13,6 @@ import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 const router = Router();
 const upload = multer({ storage: multer.memoryStorage() });
 
-// --- Initialize Clients ---
 const pinecone = new Pinecone({
   apiKey: process.env.PINECONE_API_KEY as string,
 });
@@ -21,7 +20,6 @@ const pineconeIndex = pinecone.index(process.env.PINECONE_INDEX_NAME as string);
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY as string);
 
 import { createClient } from '@supabase/supabase-js';
-// ...existing code...
 
 const supabase = createClient(
   process.env.SUPABASE_URL!,
