@@ -5,41 +5,21 @@ import { ChatArea } from './chat-area';
 import { UploadModal } from './upload-modal';
 import { PDFViewerNew } from './pdf-viewer';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import type { Document } from '@/pages/DashboardPage';
 import { getDocs } from '@/services/getDocs';
 import apiClient from '@/api';
 import { deleteDoc } from '@/services/deleteDoc';
 import { toast } from 'sonner';
 import { CheckCircle, Loader2 } from 'lucide-react';
 import { useFileUrlStore } from '@/store';
-// Add to existing interfaces
-export interface Citation {
-  id: string;
-  documentId: string;
-  documentName: string;
-  pageNumber: number;
-  text: string;
-}
-
-// Update ChatMessage interface to include citations
-export interface ChatMessage {
-  sources?: string[];
-  timestamp: string;
-  id: string;
-  role: 'user' | 'ai';
-  content: string;
-  createdAt: Date;
-  document: Document;
-  documentId: string;
-}
+import type { DocumentType } from '@/types/shared';
 
 export function RAGInterface() {
   const { fileFromSupabase, setFileFromSupabase } = useFileUrlStore();
-  const [selectedDocument, setSelectedDocument] = useState<Document | null>(
+  const [selectedDocument, setSelectedDocument] = useState<DocumentType | null>(
     null
   );
   const [isFileUploading, setIsFileUploading] = useState(false);
-  const { data: documents } = useQuery<Document[]>({
+  const { data: documents } = useQuery<DocumentType[]>({
     queryKey: ['documents'],
     queryFn: getDocs,
   });
@@ -148,7 +128,6 @@ export function RAGInterface() {
             onCitationClick={(page) => {
               setCurrentPage(Number(page));
               setIsPDFViewerOpen(true);
-              console.log(page);
             }}
           />
           {selectedDocument && isPDFViewerOpen && (

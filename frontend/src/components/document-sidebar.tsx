@@ -13,7 +13,6 @@ import {
   UserIcon,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import type { Document } from '@/pages/DashboardPage';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,14 +23,15 @@ import {
 import { Avatar, AvatarFallback } from './ui/avatar';
 import { useAuthStore } from '@/store';
 import { useNavigate } from 'react-router-dom';
+import type { DocumentType } from '@/types/shared';
 
 interface DocumentSidebarProps {
-  documents: Document[] | undefined;
+  documents: DocumentType[] | undefined;
   isOpen: boolean;
   onDeleteDocument: (id: string) => void;
   onUpload: () => void;
   onClose?: () => void;
-  onDocumentSelect: (document: Document) => void;
+  onDocumentSelect: (document: DocumentType) => void;
   isFileUploading?: boolean;
 }
 

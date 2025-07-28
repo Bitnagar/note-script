@@ -21,6 +21,7 @@ Note Script is a Retrieval-Augmented Generation (RAG) web application that lever
     - [Chat Area (`src/components/chat-area.tsx`)](#chat-area-srccomponentschat-areatsx)
     - [PDF Viewer (`src/components/pdf-viewer.tsx`, `PdfViewer.tsx`)](#pdf-viewer-srccomponentspdf-viewertsx-pdfviewertsx)
   - [Data Flow](#data-flow)
+  - [Deployments](#deployments)
   - [Setup \& Development](#setup--development)
 
 ---
@@ -131,6 +132,11 @@ Note Script is a Retrieval-Augmented Generation (RAG) web application that lever
 2. **Chat:** User asks question → Sent to backend with document ID → Backend retrieves relevant chunks from Pinecone → Sends to Gemini AI → Streams response back to frontend
 3. **Citation Click:** User clicks citation → Frontend opens PDF viewer at cited page
 
+## Deployments
+
+1. **Backend:** Backend has been deployed on `render.com`.
+2. **frontend:** frontend has been deployed on `Vercel`. [Live Demo](https://note-script-mu.vercel.app/)
+
 ---
 
 ## Setup & Development
@@ -144,6 +150,8 @@ Note Script is a Retrieval-Augmented Generation (RAG) web application that lever
 
    - `cd` into `backend` folder and copy `.env.example` to `.env`
    - Add required Supabase keys, Pinecone API key, Gemini AI key, etc.
+   - `cd` into `frontend` folder and copy `.env.example` to `.env`
+   - Add required Backend base URL, either localhost:3001 or where you have deployed your app.
 
 5. **In `/backend` run `npx prisma init --datasource-provider postgresql` to initialize a postgresql instance**
 6. **In `/backend` run `npx prisma generate` to generate the prisma client**

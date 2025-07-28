@@ -5,7 +5,5 @@ export const getMessages = async (documentId?: string) => {
     return [];
   }
   const response = await apiClient.get(`/api/documents/${documentId}/messages`);
-  console.log(response.data);
-
   return response.data;
 };

@@ -6,24 +6,16 @@ import { Textarea } from '@/components/ui/textarea';
 // import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Send, Bot, User } from 'lucide-react';
-import type { ChatMessage } from './rag-interface';
 import { cn } from '@/lib/utils';
 import { useAuthStore } from '@/store';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { getMessages } from '@/services/getMessages';
 import MultiStateCard from './multi-state-card';
+import type { ChatMessage, DocumentType } from '@/types/shared';
 
-interface Document {
-  id: string;
-  title: string;
-  content: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
-interface ChatAreaProps {
-  selectedDocument: Document | null;
-  documents: Document[] | undefined;
+export interface ChatAreaProps {
+  selectedDocument: DocumentType | null;
+  documents: DocumentType[] | undefined;
   isPDFViewerOpen?: boolean;
   isFileUploading?: boolean;
   onCitationClick: (page: string) => void;

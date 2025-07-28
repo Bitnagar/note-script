@@ -1,13 +1,12 @@
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { X, FileText } from 'lucide-react';
-
 import { cn } from '@/lib/utils';
-import type { Document } from '@/pages/DashboardPage';
 import PdfViewer from './PdfViewer';
+import type { DocumentType } from '@/types/shared';
 
 interface PDFViewerProps {
-  document: Document;
+  document: DocumentType;
   currentPage: number;
   isOpen: boolean;
   onClose: () => void;

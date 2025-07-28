@@ -166,11 +166,7 @@ router.post('/upload', upload.single('pdf'), async (req, res) => {
 router.post('/documents/:docId/chat', async (req, res) => {
   const { docId } = req.params;
   const { query } = req.body;
-  console.log(query);
-
   const userId = req.user!.id;
-
-  console.log(docId, query, userId);
 
   const document = await prisma.document.findUnique({ where: { id: docId } });
   if (!document || document.userId !== userId) {
@@ -203,8 +199,6 @@ router.post('/documents/:docId/chat', async (req, res) => {
       filter: { documentId: { $eq: docId } },
       includeMetadata: true,
     });
-
-    console.log(queryResult.matches.map((match) => match.metadata!.text));
 
     const context = queryResult.matches
       .map((match) => match.metadata!.text)

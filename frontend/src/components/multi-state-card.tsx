@@ -1,12 +1,11 @@
 import { Bot } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
-import type { Document } from '@/pages/DashboardPage';
-import type { ChatMessage } from './rag-interface';
+import type { ChatMessage, DocumentType } from '@/types/shared';
 
 type Props = {
   isLoading: boolean | undefined;
-  documents: Document[] | undefined;
-  selectedDocument: Document | null;
+  documents: DocumentType[] | undefined;
+  selectedDocument: DocumentType | null;
   messages: ChatMessage[] | undefined;
 };
 
