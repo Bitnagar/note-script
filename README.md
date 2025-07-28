@@ -137,16 +137,18 @@ Note Script is a Retrieval-Augmented Generation (RAG) web application that lever
 
 1. **Clone the repository or Extract the ZIP file**
 2. **Open in VSCode or your fav editor**
-3.
-4. **Install dependencies**
+3. **Install dependencies**
    - Frontend: `npm install` in `/frontend`
    - Backend: `npm install` in `/backend`
-5. **Configure environment variables**
+4. **Configure environment variables**
 
    - `cd` into `backend` folder and copy `.env.example` to `.env`
    - Add required Supabase keys, Pinecone API key, Gemini AI key, etc.
 
-6. **In `/backend` run `npx prisma migrate` to migrate the schema to supabase**
-7. **Start backend:** `npm run dev` in `/backend`
-8. **Start frontend:** `npm run dev` in `/frontend`
-9. **Access the app at** `http://localhost:5173`
+5. **In `/backend` run `npx prisma init --datasource-provider postgresql` to initialize a postgresql instance**
+6. **In `/backend` run `npx prisma generate` to generate the prisma client**
+7. **In `/backend` run `npx prisma migrate dev --name init` to migrate the schema to supabase**
+8. **Note: The project runs without RLS enabled on supabase. Make sure you have disabled RLS on tables and storage bucket objects. See this discussion: [#26291](https://github.com/orgs/supabase/discussions/26291)**
+9. **Start backend:** `npm run dev` in `/backend`
+10. **Start frontend:** `npm run dev` in `/frontend`
+11. **Access the app at** `http://localhost:5173`
