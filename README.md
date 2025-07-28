@@ -26,6 +26,11 @@ Note Script is a Retrieval-Augmented Generation (RAG) web application that lever
 
 ---
 
+> The app is live at [Live Demo](https://note-script-mu.vercel.app/) (for some time).
+> DO NOT upload large PDFs. It will exhaust ALL APIs credits of different services.
+> Use the PDF provided in this zip. The name of the PDF is `test-canada.pdf`
+> Upload the pdf on the platform and ask questions related to it.
+
 ## Features
 
 - **Document Upload:** Upload PDFs to the system.
