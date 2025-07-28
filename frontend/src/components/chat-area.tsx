@@ -8,11 +8,18 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Send, Bot, User } from 'lucide-react';
 import type { ChatMessage } from './rag-interface';
 import { cn } from '@/lib/utils';
-import type { Document } from '@/pages/DashboardPage';
 import { useAuthStore } from '@/store';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { getMessages } from '@/services/getMessages';
 import MultiStateCard from './multi-state-card';
+
+interface Document {
+  id: string;
+  title: string;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
+}
 
 interface ChatAreaProps {
   selectedDocument: Document | null;
@@ -101,7 +108,7 @@ export function ChatArea({
 
       // Streaming fetch
       const response = await fetch(
-        `http://localhost:3001/api/documents/${selectedDocument.id}/chat`,
+        `https://note-script.onrender.com/api/documents/${selectedDocument.id}/chat`,
         {
           method: 'POST',
           headers: {

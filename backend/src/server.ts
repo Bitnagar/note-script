@@ -25,5 +25,7 @@ app.use('/api', mainRoutes);
 
 // --- Start Server ---
 app.listen(port, () => {
-  console.log(`Backend server running at http://localhost:${port} 🚀`);
+  console.log(
+    `Backend server running at ${process.env.BACKEND_BASE_URL}:${port} 🚀`
+  );
 });
