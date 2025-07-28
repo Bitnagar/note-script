@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import apiClient from '../api';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { toast } from 'sonner';
 
 const RegisterPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -26,7 +27,8 @@ const RegisterPage: React.FC = () => {
 
     try {
       await apiClient.post('/auth/register', { email, password });
-      navigate('/');
+      toast.success('Registration successful! You can now log in.');
+      navigate('/login');
     } catch (err: any) {
       if (err.response && err.response.data && err.response.data.error) {
         setError(err.response.data.error);
